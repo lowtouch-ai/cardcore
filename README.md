@@ -2,7 +2,11 @@
 
 **COBOL to Java, story by story.**
 
-How Krithi ports CardCore: PRD extraction, sprint planning and governed delivery, two stories at a time.
+How [Krithi](https://www.lowtouch.ai/agents/krithi/) ports CardCore: PRD extraction, sprint planning and governed delivery, two stories
+at a time.
+
+A working reference for **legacy COBOL to Java migration** — real CICS screen flows and JCL batch jobs
+ported to Spring Boot on Postgres, under human review at every step.
 
 `github.com/lowtouch-ai/cardcore`
 
@@ -24,7 +28,7 @@ Synthetic data by design: the full pipeline can be shown without touching anyone
 
 ## One pipeline, source to pull request
 
-Krithi runs the whole loop inside the client tenancy.
+Krithi, lowtouch.ai's [agentic SDLC engine](https://www.lowtouch.ai/agents/krithi/), runs the whole loop inside the client tenancy.
 
 ```
   CardCore                    Krithi                      Modern target
@@ -117,6 +121,17 @@ Every artifact stays in the repository, timestamped, ready to open on demand.
 
 Per cycle: **2** stories taken to done · **45–90 min** per story, end to end · **2 PRs** — dev merged
 autonomously, main human-reviewed.
+
+## About Krithi
+
+CardCore is a public reference implementation of [legacy COBOL to Java migration](https://www.lowtouch.ai/agents/krithi/) run by Krithi,
+lowtouch.ai's agentic SDLC engine. Krithi reads legacy source, plans the work, writes and tests the
+implementation, then audits the diff for security and accessibility before opening a pull request. A human
+approval gate sits at every stage, and no code leaves your infrastructure.
+
+The same pipeline covers [mainframe modernization](https://www.lowtouch.ai/agents/krithi/) beyond this codebase: CICS to Spring Boot, VSAM to
+PostgreSQL, JCL batch jobs to scheduled services — each output diffed against the legacy run before it
+merges.
 
 ## Repository layout
 
