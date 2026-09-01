@@ -1,6 +1,7 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents (Claude Code, Codex, and others) working in this repository.
+It mirrors `CLAUDE.md`; keep the two in sync.
 
 ## What this repository is
 
@@ -14,8 +15,8 @@ Because the codebase intentionally exercises analysis tooling, it mixes coding s
 Do not "normalize" style across programs.
 
 Source artifacts keep the upstream `CardDemo` naming — program banners, `AWS.M2.CARDDEMO.*` dataset names,
-`GROUP(CARDDEMO)` in the CSD, and the `Ver: CardDemo_*` stamps. Only prose (README.md, this file) says
-"CardCore". Do not rename inside source.
+`GROUP(CARDDEMO)` in the CSD, and the `Ver: CardDemo_*` stamps. Only prose (README.md, CLAUDE.md, this file,
+`docs/`) says "CardCore". Do not rename inside source.
 
 ## Current purpose: COBOL-to-Java migration demo
 
