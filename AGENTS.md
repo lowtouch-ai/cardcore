@@ -29,6 +29,21 @@ README.md stays free of business detail by convention (it describes the migratio
 application); put functional documentation in `docs/` instead. The three optional-module READMEs under
 `app/app-*/` and the screen/flow images in `diagrams/` also carry functional detail specific to those modules.
 
+**The modern target — Java (Spring Boot) API + Next.js UI — lives in two sibling repos, not here.** This
+repo (`cardcore`) is the legacy COBOL source only, read-only input to the REQ agent; nothing in it is ever
+ported in place. The migration output goes to:
+
+- **`cardcore-api`** — Spring Boot 3 / Java 17 API. Entities mirror the legacy VSAM record layouts
+  (`Customer` ~ `CVCUS01Y`, `Account` ~ `CVACT01Y`, `Card` ~ `CVACT02Y`, `CardXref` ~ `CVACT03Y`,
+  `Transaction` ~ `CVTRA05Y`) — see `docs/data-model.md` in this repo for the source layouts they're
+  ported from.
+- **`cardcore-ui`** — Next.js 14 (App Router), TypeScript, Tailwind. Calls `cardcore-api` server-side
+  (never a client-side base URL) for the screens it renders.
+
+An agent (or reviewer) working from PRD/FRS output produced against *this* repo should look in those two
+sibling repos for the actual Java/Next.js implementation state — this repo's own `app/` tree never gains a
+Java or TypeScript equivalent; the port lands there instead.
+
 ## Build and run
 
 There is no local build. Compilation and execution are JCL jobs on the target system:
