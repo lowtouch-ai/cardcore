@@ -43,6 +43,18 @@ An agent (or reviewer) working from PRD/FRS output produced against *this* repo 
 sibling repos for the actual Java/Next.js implementation state — this repo's own `app/` tree never gains a
 Java or TypeScript equivalent; the port lands there instead.
 
+**Hard rule for agents: this repo (`cardcore`) is read-only source for the migration.** Never edit, add, or
+delete anything under `app/` (COBOL, copybooks, BMS, JCL, CSD, etc.) as part of a migration task — the COBOL
+application is the *input* being analyzed, not something being ported in place. All migration output goes to
+the sibling repos, split strictly by layer:
+
+- Any UI/screen/frontend change → `cardcore-ui` only.
+- Any API/business-logic/data-model change → `cardcore-api` only.
+
+If a migration task seems to require touching COBOL source in this repo, that's a signal the task is scoped
+wrong — stop and flag it instead of editing `app/`. Editing files in `docs/`, `README.md`, `CLAUDE.md`, or
+`AGENTS.md` (documentation/prose about the migration) is not covered by this rule.
+
 ## Build and run
 
 There is no local build. Compilation and execution are JCL jobs on the target system:
